@@ -1,0 +1,141 @@
+# ===================================
+# LOKALE DOKUMENTER (ikke del med team)
+# ===================================
+Claude.md
+features.md
+plan.md
+test-strategy.md
+
+# ===================================
+# JAVA COMPILED FILES
+# ===================================
+# Hvorfor: .class filer er kompilert bytecode - genereres av 'mvn compile'
+# Alle kan generere dem fra kildekoden, så de skal ikke commites
+*.class
+
+# Hvorfor: .jar, .war, .ear er bygde artifacts fra 'mvn package'
+# Pipeline bygger dem fresh hver gang, så vi commiter ikke ferdigbygde filer
+*.jar
+*.war
+*.ear
+
+# ===================================
+# MAVEN
+# ===================================
+# Hvorfor: target/ mappen er hvor Maven legger alt den bygger
+# Inneholder: compiled classes, test reports, packaged jar, etc.
+# Genereres på nytt ved 'mvn clean install'
+target/
+
+# Hvorfor: Maven wrapper filer - hvis vi HAR dem committed vil vi beholde,
+# men hvis ikke, skal de ikke legges til
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ===================================
+# IDE FILER (IntelliJ IDEA)
+# ===================================
+# Hvorfor: IntelliJ lager disse filene for sitt eget bruk
+# Hver utvikler har sine egne IDE-innstillinger
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ===================================
+# IDE FILER (Eclipse)
+# ===================================
+# Hvorfor: Eclipse sine prosjektfiler - spesifikke for hver utviklers oppsett
+.classpath
+.project
+.settings/
+
+# ===================================
+# IDE FILER (VS Code)
+# ===================================
+# Hvorfor: VS Code sine workspace settings - kan variere per utvikler
+.vscode/
+*.code-workspace
+
+# ===================================
+# OPERATING SYSTEM FILES
+# ===================================
+# Hvorfor: MacOS lager .DS_Store filer automatisk - ingen andre trenger dem
+.DS_Store
+
+# Hvorfor: Windows lager Thumbs.db for bildeforhåndsvisning - irrelevant for kode
+Thumbs.db
+
+# Hvorfor: Temporary filer som OS-et lager
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+
+# ===================================
+# ENVIRONMENT & SECRETS
+# ===================================
+# Hvorfor: KRITISK! .env filer inneholder ofte secrets (passord, API keys)
+# Skal ALDRI commites - hver miljø har sine egne secrets
+.env
+.env.local
+.env.*.local
+
+# Hvorfor: application-local.properties brukes ofte for lokal utvikling
+# Kan inneholde lokale database-passord
+application-local.properties
+application-local.yml
+
+# ===================================
+# TESTING
+# ===================================
+# Hvorfor: JUnit/Surefire lager test reports i disse mappene
+# Pipeline generer dem på nytt, så vi trenger ikke commitee dem
+.pytest_cache/
+.coverage
+htmlcov/
+*.coveragerc
+
+# Hvorfor: JaCoCo (code coverage tool) lager rapporter her
+jacoco.exec
+*.exec
+
+# ===================================
+# SPRING BOOT
+# ===================================
+# Hvorfor: Spring DevTools sine restart trigger-filer
+.spring-boot-devtools.properties
+
+# ===================================
+# DATABASE
+# ===================================
+# Hvorfor: Hvis noen kjører H2 embedded database lokalt
+# Data skal ikke commites
+*.db
+*.h2.db
+
+# ===================================
+# DOCKER
+# ===================================
+# Hvorfor: Docker kan lage volume-data lokalt under utvikling
+# Produksjons-data skal ikke være i repo
+docker-compose.override.yml
+
+# ===================================
+# BUILD LOGS
+# ===================================
+# Hvorfor: Maven/build logs er kun nyttig for debugging lokalt
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===================================
+# BACKUP FILES
+# ===================================
+# Hvorfor: Editors lager backup-filer - ikke relevant for versjonskontroll
+*.bak
+*.backup
+*~.nib
