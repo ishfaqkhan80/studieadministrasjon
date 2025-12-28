@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: studieadministrasjon
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
