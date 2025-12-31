@@ -26,10 +26,10 @@ jobs:
                 cache: 'maven'
 
             - name: Run tests and generate reports
-              run: mvn clean test
+              run: mvn clean test jacoco:report
 
             - name: Check coverage threshold
-              run: mvn verify -DskipTests
+              run: mvn jacoco:check@check
 
             - name: Upload test results
               if: always()
