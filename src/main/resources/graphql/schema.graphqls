@@ -1,0 +1,21 @@
+type Student {
+    id: ID!
+    studentNumber: String!
+    firstName: String!
+    lastName: String!
+    email: String!
+    dateOfBirth: String!
+}
+
+type Mutation {
+    registerStudent(
+        firstName: String!
+        lastName: String!
+        email: String!
+        dateOfBirth: String!
+    ): Student!
+}
+
+type Query {
+    _empty: String
+}
