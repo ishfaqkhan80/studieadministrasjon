@@ -8,3 +8,7 @@ spring:
     graphiql:
       enabled: true
       path: /graphiql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
